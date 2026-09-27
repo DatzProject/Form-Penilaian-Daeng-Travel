@@ -167,7 +167,7 @@ export default function App() {
 
         <h1 style={styles.title}>Form Penilaian Peserta Tour Daeng Travel</h1>
         <p style={styles.subtitle}>
-          Isi form berikut untuk menilai peserta selama kegiatan perjalanan.
+          Isi form berikut untuk menilai pelayanan Daeng Travel selama kegiatan perjalanan.
         </p>
 
         <form onSubmit={handleSubmit}>

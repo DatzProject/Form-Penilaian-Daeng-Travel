@@ -217,7 +217,7 @@ export default function App() {
               rows={4}
               value={form.catatan}
               onChange={(e) => updateField("catatan", e.target.value)}
-              placeholder="Catatan khusus mengenai peserta (opsional)"
+              placeholder="Catatan khusus mengenai pelayanan Daeng Travel selama perjalanan (opsional)"
             />
           </div>
 

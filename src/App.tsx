@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 // https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxx/exec
 // =====================================================================
 const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyexly8Rok96sjf9QNEj9C-Y7NXxY85KxTLo8LQapEd6zyK3qQmcNum1uzSbYDWolSkTQ/exec";
+  "https://script.google.com/macros/s/AKfycbwLUT-wunXFgQ76SrYNmMaEKoT2zWS2w6iKSa25SBkoIgM-n63mzNmz06vDKPHPi5lPBA/exec";
 
 // Daftar kriteria penilaian — silakan ubah sesuai kebutuhan tour/travel Anda
 const KRITERIA: {
@@ -40,6 +40,12 @@ const KRITERIA: {
     label: "Transportasi",
     deskripsi: "Kenyamanan & ketepatan armada transportasi selama perjalanan",
   },
+  {
+    key: "kegiatanPurnabakti",
+    label: "Kepuasan Pelaksanaan Kegiatan Purnabakti",
+    deskripsi:
+      "Kepuasan terhadap keseluruhan pelaksanaan kegiatan purnabakti di luar negeri",
+  },
 ];
 
 interface SkorKriteria {
@@ -48,6 +54,7 @@ interface SkorKriteria {
   makanan: number;
   hotel: number;
   transportasi: number;
+  kegiatanPurnabakti: number;
 }
 
 interface FormState {
@@ -62,6 +69,7 @@ const initialSkor: SkorKriteria = {
   makanan: 0,
   hotel: 0,
   transportasi: 0,
+  kegiatanPurnabakti: 0,
 };
 
 const initialForm: FormState = {
@@ -120,6 +128,7 @@ export default function App() {
       makanan: form.skor.makanan,
       hotel: form.skor.hotel,
       transportasi: form.skor.transportasi,
+      kegiatanPurnabakti: form.skor.kegiatanPurnabakti,
       rataRata,
       catatan: form.catatan,
     };
@@ -165,9 +174,13 @@ export default function App() {
           />
         </div>
 
+        <div style={styles.eventBadge}>
+          Kegiatan Pra Purnabakti PT. Semen Tonasa 2026 — Malaysia
+        </div>
+
         <h1 style={styles.title}>Form Penilaian Peserta Tour Daeng Travel</h1>
         <p style={styles.subtitle}>
-          Isi form berikut untuk menilai pelayanan Daeng Travel selama kegiatan perjalanan.
+          Isi form berikut untuk menilai pelayanan selama kegiatan perjalanan.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -217,7 +230,7 @@ export default function App() {
               rows={4}
               value={form.catatan}
               onChange={(e) => updateField("catatan", e.target.value)}
-              placeholder="Catatan khusus mengenai pelayanan Daeng Travel selama perjalanan (opsional)"
+              placeholder="Catatan khusus mengenai pelayanan selama perjalanan (opsional)"
             />
           </div>
 
@@ -263,13 +276,27 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
-    marginBottom: 20,
-    paddingBottom: 20,
+    marginBottom: 16,
+    paddingBottom: 16,
     borderBottom: "1px solid #f0f0f0",
   },
   logoLeft: { height: 56, objectFit: "contain" },
   logoRight: { height: 80, objectFit: "contain" },
   logoDivider: { width: 1, height: 40, background: "#e5e7eb" },
+  eventBadge: {
+    display: "block",
+    width: "fit-content",
+    margin: "0 auto 16px",
+    textAlign: "center",
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: 0.3,
+    color: "#b91c1c",
+    background: "#fef2f2",
+    border: "1px solid #fecaca",
+    borderRadius: 999,
+    padding: "6px 14px",
+  },
   row2: { display: "flex", gap: 16, marginBottom: 4 },
   field: { flex: 1, marginBottom: 16 },
   label: {
